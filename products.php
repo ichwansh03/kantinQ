@@ -21,6 +21,8 @@ if(isset($_POST['add_product'])){
    $stock = filter_var($stock, FILTER_SANITIZE_STRING);
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
+   $timestamp = date('Y-m-d H:i:s');
+   $timestamp = filter_var($timestamp, FILTER_SANITIZE_STRING);
 
    $image_01 = $_FILES['image_01']['name'];
    $image_01 = filter_var($image_01, FILTER_SANITIZE_STRING);
@@ -47,8 +49,8 @@ if(isset($_POST['add_product'])){
       $message[] = 'nama menu sudah ada!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01, image_02, image_03, stock) VALUES(?,?,?,?,?,?,?)");
-      $insert_products->execute([$name, $details, $price, $image_01, $image_02, $image_03, $stock]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, timestamp, price, image_01, image_02, image_03, stock) VALUES(?,?,?,?,?,?,?,?)");
+      $insert_products->execute([$name, $details, $timestamp, $price, $image_01, $image_02, $image_03, $stock]);
 
       if($insert_products){
          if($image_size_01 > 2000000 OR $image_size_02 > 2000000 OR $image_size_03 > 2000000){
@@ -111,7 +113,7 @@ if(isset($_GET['delete'])){
    <form action="" method="post" enctype="multipart/form-data">
       <div class="flex">
          <div class="inputBox">
-            <span>Tambah Menu</span>
+            <span>Nama</span>
             <input type="text" class="box" required maxlength="100" placeholder="Masukkan Nama Menu" name="name">
          </div>
          <div class="inputBox">

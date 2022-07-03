@@ -48,7 +48,7 @@ if(isset($_GET['delete_all'])){
 
 <section class="products">
 
-   <h3 class="heading">your wishlist</h3>
+   <h3 class="heading">daftar keinginan</h3>
 
    <div class="box-container">
 
@@ -66,6 +66,7 @@ if(isset($_GET['delete_all'])){
       <input type="hidden" name="name" value="<?= $fetch_wishlist['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_wishlist['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_wishlist['image']; ?>">
+      <input type="hidden" name="stock" value="<?= $fetch_wishlist['stock']; ?>">
       <a href="quick_view.php?pid=<?= $fetch_wishlist['pid']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="">
       <div class="name"><?= $fetch_wishlist['name']; ?></div>
@@ -73,36 +74,24 @@ if(isset($_GET['delete_all'])){
          <div class="price">Rp.<?= $fetch_wishlist['price']; ?>/-</div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart">
-      <input type="submit" value="delete item" onclick="return confirm('delete this from wishlist?');" class="delete-btn" name="delete">
+      <input type="submit" value="tambahkan ke keranjang" class="btn" name="add_to_cart">
+      <input type="submit" value="hapus" onclick="return confirm('delete this from wishlist?');" class="delete-btn" name="delete">
    </form>
    <?php
       }
    }else{
-      echo '<p class="empty">your wishlist is empty</p>';
+      echo '<p class="empty">daftar keinginanmu kosong</p>';
    }
    ?>
    </div>
 
    <div class="wishlist-total">
-      <p>grand total : <span>$<?= $grand_total; ?>/-</span></p>
-      <a href="shop.php" class="option-btn">continue shopping</a>
-      <a href="wishlist.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from wishlist?');">delete all item</a>
+      <p>total bayar : <span>Rp.<?= $grand_total; ?>/-</span></p>
+      <a href="shop.php" class="option-btn">lanjut jajan</a>
+      <a href="wishlist.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('hapus semua dari daftar?');">hapus semua</a>
    </div>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include 'components/footer.php'; ?>
 

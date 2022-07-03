@@ -35,7 +35,7 @@ include 'components/wishlist_cart.php';
 
 <section class="quick-view">
 
-   <h1 class="heading">quick view</h1>
+   <h1 class="heading">Detail Menu</h1>
 
    <?php
      $pid = $_GET['pid'];
@@ -49,6 +49,8 @@ include 'components/wishlist_cart.php';
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
+      <input type="hidden" name="stock" value="<?= $fetch_product['stock']; ?>">
+      <input type="hidden" name="timestamp" value="<?= $fetch_product['timestamp']; ?>">
       <div class="row">
          <div class="image-container">
             <div class="main-image">
@@ -61,15 +63,16 @@ include 'components/wishlist_cart.php';
             </div>
          </div>
          <div class="content">
+            <div class="details"><span>Ditambahkan Pada : </span><?= $fetch_product['timestamp']; ?></div>
             <div class="name"><?= $fetch_product['name']; ?></div>
             <div class="flex">
-               <div class="price"><span>$</span><?= $fetch_product['price']; ?><span>/-</span></div>
+               <div class="price"><span>Rp.</span><?= $fetch_product['price']; ?><span>/-</span></div>
                <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
             </div>
+            <div class="name"><span>Stok: </span><?= $fetch_product['stock']; ?></div>
             <div class="details"><?= $fetch_product['details']; ?></div>
             <div class="flex-btn">
-               <input type="submit" value="add to cart" class="btn" name="add_to_cart">
-               <input class="option-btn" type="submit" name="add_to_wishlist" value="add to wishlist">
+               <input type="submit" value="tambahkan ke keranjang" class="btn" name="add_to_cart">
             </div>
          </div>
       </div>
@@ -77,7 +80,7 @@ include 'components/wishlist_cart.php';
    <?php
       }
    }else{
-      echo '<p class="empty">no products added yet!</p>';
+      echo '<p class="empty">tidak ada penambahan menu!</p>';
    }
    ?>
 

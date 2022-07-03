@@ -20,9 +20,11 @@ if(isset($_POST['update'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $details = $_POST['details'];
    $details = filter_var($details, FILTER_SANITIZE_STRING);
+   $stock = $_POST['stock'];
+   $stock = filter_var($stock, FILTER_SANITIZE_STRING);
 
-   $update_product = $conn->prepare("UPDATE `products` SET name = ?, price = ?, details = ? WHERE id = ?");
-   $update_product->execute([$name, $price, $details, $pid]);
+   $update_product = $conn->prepare("UPDATE `products` SET name = ?, price = ?, details = ?, stock = ? WHERE id = ?");
+   $update_product->execute([$name, $price, $details, $stock, $pid]);
 
    $message[] = 'Menu Berhasil Diubah!';
 
@@ -130,12 +132,14 @@ if(isset($_POST['update'])){
             <img src="uploaded_img/<?= $fetch_products['image_03']; ?>" alt="">
          </div>
       </div>
-      <span>update name</span>
+      <span>update nama</span>
       <input type="text" name="name" required class="box" maxlength="100" placeholder="Nama" value="<?= $fetch_products['name']; ?>">
-      <span>update price</span>
+      <span>update harga</span>
       <input type="number" name="price" required class="box" min="0" max="9999999999" placeholder="Harga" onkeypress="if(this.value.length == 10) return false;" value="<?= $fetch_products['price']; ?>">
-      <span>update details</span>
+      <span>update deskripsi</span>
       <textarea name="details" class="box" required cols="30" rows="10"><?= $fetch_products['details']; ?></textarea>
+      <span>update stok</span>
+      <input type="text" name="stock" required class="box" maxlength="100" placeholder="Stok" value="<?= $fetch_products['stock']; ?>">
       <span>Gambar 1</span>
       <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box">
       <span>Gambar 2</span>

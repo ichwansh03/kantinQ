@@ -57,8 +57,6 @@ include 'components/wishlist_cart.php';
    
    </div>
 
-      <div class="swiper-pagination"></div>
-
    </div>
 
 </section>
@@ -67,7 +65,7 @@ include 'components/wishlist_cart.php';
 
 <section class="products">
 
-   <h1 class="heading">Jajanan Terkini</h1>
+   <h1 class="heading">Menu Terkini</h1>
 
    <div class="box-container">
 

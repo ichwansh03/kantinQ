@@ -26,7 +26,7 @@
 
       <div class="icons">
          <?php
-            $fetch_balance = 0;
+            $grand_total = 0;
             $count_wishlist_items = $conn->prepare("SELECT * FROM `wishlist` WHERE user_id = ?");
             $count_wishlist_items->execute([$user_id]);
             $total_wishlist_counts = $count_wishlist_items->rowCount();
@@ -42,9 +42,11 @@
          ?>
          <div id="menu-btn" class="fas fa-bars"></div>
          <a href="search_page.php"><i class="fas fa-search"></i></a>
-         <a href="#"><i class=" fas fa-money-check-alt"></i><span>(Rp.<?php if($count_balance->rowCount()>0){
+         <a href="#"><i class=" fas fa-money-check-alt"></i><span>(Rp.<?php if($count_balance->rowCount()>0 && $total_cart_counts>0){
                $fetch_balance = $count_balance->fetch(PDO::FETCH_ASSOC);
-               echo $fetch_balance['pbalance'];} ?>)</span></a>
+               $fetch_cart = $count_cart_items->fetch(PDO::FETCH_ASSOC);
+               $grand_total = $fetch_balance['pbalance'] - ($fetch_cart['price'] * $fetch_cart['quantity']);
+               echo $grand_total;} ?>)</span></a>
          <a href="wishlist.php"><i class="fas fa-heart"></i><span>(<?= $total_wishlist_counts; ?>)</span></a>
          <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>(<?= $total_cart_counts; ?>)</span></a>
          <div id="user-btn" class="fas fa-user"></div>
@@ -60,7 +62,7 @@
          <p><?= $fetch_profile["name"]; ?></p>
          <a href="update_user.php" class="btn">Update Profil</a>
          <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">Daftar Akun</a>
+            <a href="user_register.php" class="option-btn">Daftar</a>
             <a href="user_login.php" class="option-btn">Login</a>
          </div>
          <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('keluar dari website?');">Keluar</a> 
