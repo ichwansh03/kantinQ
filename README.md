@@ -17,4 +17,15 @@ Kantin kejujuran merupakan website yang dikembangkan menggunakan framework boots
 ## Daftar Fitur
 * Melihat menu saat ini. User juga dapat melihat secara detail menu dengan mengklik float button pada gambar dan menyipan pada wishlist
 ![Read](./images/add.PNG)
-* 
+
+* Melihat pesanan. User dapat melihat pesanan yang telah ditambahkan untuk selanjutnya dilakukan checkout 
+![Order](./images/order.PNG)
+
+* Menambahkan menu. User menambahkan menu untuk nantinya ditampilkan pada dashboard.
+![Add](./images/addmenu.PNG)
+
+* Melakukan checkout. User membayar menu yang dibeli setelah dimasukkan ke wishlist
+![Checkout](./images/checkout.PNG)
+
+* Memberikan masukan. User dapat menulis komentar nya pada fitur kotak saran
+![Masukan](./images/masukan.PNG)
