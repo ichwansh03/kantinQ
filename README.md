@@ -1,6 +1,6 @@
 ## Tentang Projek
 
-![Dasbor](./images/dasbor.PNG)
+![Dasbor](https://github.com/ichwansh03/kantinQ/blob/main/images/checkout.PNG)
 
 Kantin kejujuran merupakan website yang dikembangkan menggunakan framework bootstrap. Website kantin kejujuran berbasis CRUD (Create, Read, Update dan Delete) dalam pengelolaan data menu.
 
